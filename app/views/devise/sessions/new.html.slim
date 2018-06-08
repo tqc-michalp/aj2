@@ -1,0 +1,18 @@
+.row
+  .col-sm
+    .card
+      .card-body
+        h5.card-title
+          | Log in
+        p.card-text
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'form-group' } }) do |f|
+            = f.input :email, autofocus: true
+            = f.input :password
+            = f.submit "Log in", class: 'btn btn-success'
+  .col-sm
+    .card
+      .card-body
+        h5.card-title
+          | Credentials
+        p.card-text
+          | admin@example.com | admin

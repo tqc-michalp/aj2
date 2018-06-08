@@ -1,0 +1,16 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand[href="#"]
+    | aj
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+  - if user_signed_in?
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          = link_to 'Users', users_path, class: 'nav-link'
+        li.nav-item
+          = link_to('Logout', destroy_user_session_path, method: :delete, class: 'nav-link')
+      span.navbar-text
+        |  (
+        = current_user.email
+        | ) 

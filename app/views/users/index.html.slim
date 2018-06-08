@@ -1,0 +1,42 @@
+= link_to 'new user', new_user_path, class: 'btn btn-primary'
+.table-responsive
+  table.table
+    thead.thead-dark
+      tr
+        th
+          | user_id
+        th
+          | email
+        th
+          | admin?
+        th
+          | articles_count
+        th
+          | created_at
+        th
+          | updated_at
+        th[colspan='2']
+          | actions
+    tbody
+      - @users.each do |user|
+        tr
+          td
+            = user.id
+          td
+            = link_to user.email, user_articles_path(user.id), class: 'btn btn-default'
+          td
+            = user.admin
+          td
+            = user.articles_count
+          - if user.created_at == user.updated_at
+            td[colspan="2"]
+              = user.created_at.strftime("%a %b %e %T %Y")
+          - else
+            td
+              = user.updated_at
+            td
+              = user.updated_at
+          td
+            = link_to 'edit', edit_user_path(user.id), class: 'btn btn-outline-warning'
+          td
+            = link_to "#{ current_user.id == user.id ? 'destroy and log out instantly' : 'destroy'}", user_path(user.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

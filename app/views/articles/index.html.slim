@@ -1,0 +1,25 @@
+h2
+  | Articles of user: 
+  = @user.email
+table.table
+  thead.thead-dark
+    tr
+      th
+        | Title
+      th
+        | Completed
+      th
+        | Created at
+      th
+        | Updated at
+  tbody
+    - @articles.each do |article|
+      tr
+        td
+          = article.title
+        td
+          = article.completed
+        td
+          = article.created_at
+        td
+          = article.updated_at

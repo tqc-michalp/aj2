@@ -2,12 +2,18 @@ doctype html
 html[lang="en"]
   head
     title
-      | Aj2
-    meta[charset="utf-8"]
-    meta[name="viewport" content="width=device-width, initial-scale=1"]
+      | aj2
     = csrf_meta_tags
     = csp_meta_tag
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    = render 'layouts/navbar'
+    .container-fluid
+      .row
+        .col-lg
+          - flash.each do |name, msg|
+            = content_tag :div, msg, class: name
+      = yield
