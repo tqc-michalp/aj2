@@ -1,0 +1,4 @@
+= simple_form_for @user, input_htmlt: { class: 'form-group' } do |item|
+  = item.input :email
+  = item.input :admin, as: :radio_buttons
+  = item.button :submit
